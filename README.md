@@ -1,12 +1,9 @@
 # flask_app_template
-flask app template with blueprint
-
-A simple template learn from someone don't want to tell his name.
-
-# flask-app-template
-
 
 A flask template for [cookiecutter](https://cookiecutter.readthedocs.io).
+
+基本目录树和很接近这本书 <Flask Web开发：基于Python的Web应用开发实战>
+https://book.douban.com/subject/26274202/
 
 ## Usage
 
