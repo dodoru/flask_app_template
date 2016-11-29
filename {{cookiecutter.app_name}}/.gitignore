@@ -1,0 +1,9 @@
+local_config.py
+.idea/
+*.sw[op]
+*.pyc
+.python-version
+.cache/
+.DS_Store
+.coverage
+.tox
