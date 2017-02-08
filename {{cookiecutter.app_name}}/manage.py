@@ -1,7 +1,7 @@
 from flask_script import Manager, Shell
 from flask_script.commands import Clean, ShowUrls
 
-from {{cookiecutter.app_name}}.app import app, db
+from src.app import app, db
 
 manager = Manager(app)
 

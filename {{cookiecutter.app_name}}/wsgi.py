@@ -1,3 +1,2 @@
-from {{cookiecutter.app_name}}.app import app
+from src.app import app
 
-application = app

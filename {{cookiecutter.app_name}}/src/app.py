@@ -14,9 +14,9 @@ def create_app(config=None):
     return _app
 
 
-def config_app(app, config):
+def config_app(app, config=None, _default='src.config'):
     #: load default configuration
-    app.config.from_object('{{cookiecutter.app_name}}.config')
+    app.config.from_object(_default)
 
     #: load app specified configuration
     if config and isinstance(config, dict):
@@ -29,9 +29,11 @@ def init_app_blueprint(app):
     app.register_blueprint(err_bp)
 
 
-def init_app_logger(app, level=logging.DEBUG):
+def init_app_logger(app):
     # initialize logger
     logger = app.logger
+
+    level = app.config.get('LOG_LEVEL', logging.DEBUG)
     logger.setLevel(level)
     handler = logging.StreamHandler()
     handler.setLevel(level)
@@ -40,7 +42,14 @@ def init_app_logger(app, level=logging.DEBUG):
     )
     handler.setFormatter(formatter)
     logger.addHandler(handler)
-    return app
+
+    logfile = app.config.get('LOG_FILE', None)
+    if logfile is not None:
+        fhdl = logging.FileHandler(filename=logfile)
+        fhdl.setFormatter(formatter)
+        logger.addHandler(fhdl)
+
+    return logger
 
 
 app = create_app()
@@ -53,3 +62,8 @@ db.create_all()
 def errorhandler_500(e):
     # 500 can not register on per_blueprint
     return 'server internal error'
+
+
+@app.route('/ping')
+def ping():
+    return 'pong'

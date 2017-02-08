@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 
 from flask import Blueprint, render_template
-from {{cookiecutter.app_name}}.errors import ConflictError, UnauthorizedError
+from src.errors import ConflictError, UnauthorizedError
 
 err_bp = Blueprint('err_bp', __name__, template_folder='templates')
 

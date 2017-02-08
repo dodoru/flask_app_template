@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 
+
 class UnauthorizedError(Exception):
     def __init__(self, user_id=None, tips=None):
         self.code = 401
