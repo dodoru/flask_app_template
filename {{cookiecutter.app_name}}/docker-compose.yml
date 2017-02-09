@@ -1,0 +1,35 @@
+# https://docs.docker.com/compose/gettingstarted/
+
+#version: '2'
+#depends:
+#  redis:
+#    image: "redis:alpine"
+#    ports:
+#      - "6379:6379"
+#    links:
+#      - redis:elk
+#
+#  elk:
+#    enviroment:
+#      PATH: $PATH:/opt/elasticsearch/bin:/opt/logstash/bin:/opt/kibana/bin
+#    ports:
+#      - "5601:5601"
+#      - "9200:9200"
+#      - "5044:5044"
+
+{{cookiecutter.app_name}}:
+  build: .
+  # image: {{cookiecutter.app_name}}:tag
+  command:
+    - "supervisord"
+    - "-n"
+    - "-c"
+    - "supervisord.conf"
+  # envfile: .env
+  enviroment:
+    - "SQLALCHEMY_DATABASE_URI=mysql+pymysql://user:password@db_host/db_index"
+  ports:
+    - "8080:9090"
+  restart:
+    - "always"
+
