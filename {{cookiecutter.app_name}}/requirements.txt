@@ -3,3 +3,8 @@ flask-sqlalchemy==2.1
 sqlalchemy==1.0.14
 PyMySQL==0.7.5
 Flask-Script==2.0.5
+pytest==3.0.0
+mock==2.0.0
+gunicorn==19.6
+gevent==1.1.2
+setproctitle==1.1.10
