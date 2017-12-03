@@ -8,3 +8,4 @@ mock==2.0.0
 gunicorn==19.6
 gevent==1.1.2
 setproctitle==1.1.10
+manage.py==0.2.10
